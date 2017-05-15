@@ -1,0 +1,318 @@
+
+\documentclass{beamer}
+
+\usetheme{JuanLesPins}
+%\usecolortheme{beetle}
+\setbeamertemplate{navigation symbols}{} 	
+
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{tikz}
+\newcommand{\D}{.}
+\newcommand{\e}{/backup/bio_data/bio.eels/figures/}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[SPR for American Eel]{American Eel\\ Framework for Developing SPR Reference Points \\ \tiny aka Chaput and Cairns CSAS 2011 Res Doc} 
+{
+	\author{Adam Cook \& Rod Bradford} % Your name
+\institute[Population Ecology Division]
+{Bedford Institute of Oceanography \\ % Your institution for the title page
+\medskip
+\textit{Adam.Cook@dfo-mpo.gc.ca} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+	\titlepage % Print the title page as the first slide
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+
+%------------------------------------------------
+%
+\begin{frame}
+\frametitle{Background}
+%
+\begin{itemize}
+	\item Precautionary approach to managing fish stocks
+	\item Develop harvest strategies and reference points to define zones
+	\item ICES 2001 suggested Spawner Per Recruit or Spawner Potential Ratio (SPR) can be used to define harvest levels 
+\end{itemize}
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+%\section{Reference Point Estimation}
+%\begin{frame}
+%\frametitle{Simple Age Strutured Model}
+%       \begin{align*}
+%       	N_{a+1,t+1} &= N_{a,t} \: e^{-(F_t \cdot v_a+M_a)} \: for \quad a > 1, a< n\\ 
+%       	N_{n,t+1} &= N_{n-1,t} \: e^{-(F_t \cdot v_{n-1}+M_{n-1})}+N_{n,t} \: e^{-(F_t \cdot v_n +M_n)} \: for \quad a=n \\
+%       E_t &= \sum_a \: N_{a,t} \cdot f_a \\
+%       	N_{1,t+1} &= g(E_t) \\
+%       	C_t &= \sum_a \: N_{a,t}w_a(1-e^{-(F_t \cdot v_a +M_a)})\frac{F_t \cdot v_a}{F_t \cdot v_a +M_a}\\
+%       \end{align*}
+%\end{frame}
+%-------------------------------------------------------------------------------------------
+\begin{frame}
+
+	\frametitle{Spawner Per Recruit Analysis}
+
+	\begin{itemize}
+		\item Simple age (size) strucutured model
+		\item Incorporates life history variables
+		\item Examine the relationship between fishing mortality and spawner production 
+		\item Developed for Groundfish - applied to a range of species
+		\item Easily extendible to explore harvest rate strategies and life patterns
+	\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Background}
+%
+\begin{itemize}
+	\item ICES 2001 - proposed SPR with 30\% as limit and 50\% as target
+		\begin{itemize}
+			\item ICES 1997 suggest 30\% virgin SPR reasonable estimate of Flim
+		\end{itemize}
+	\item Chaput and Cairns 2011 - expanded SPR framework for Eel
+	\begin{itemize}
+		\item Incorporating variable life history and different mortality scenarios.
+		\item Strengthened the case for regional scale reference levels
+	\end{itemize}
+\item Continue this discussion, combine elver fishing into the SPR framework and explore interactions
+\item This work presented here is \textbf{NOT} designed to define F reference levels for Maritimes Region 
+\end{itemize}
+
+\end{frame}
+%
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Estimating SPR}
+	\begin{block}{Life History Parameters}
+	\begin{itemize}
+		\item Growth - length and weight at age
+		\item Vulnerability at age (single or multiple fisheries)
+		\item Fecundity at age
+		\item Mortality at age 
+		\item Maturity at age
+		\item With or without variability
+			\begin{itemize}
+				\item Model uncertainty
+				\item Regional differences
+			\end{itemize}
+	\end{itemize}
+	\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{General Spawner Per Recruit}
+	\begin{align*}
+		N_1 &= 1 \\
+		N_{a+1} &= N_a \: e^{-(F \cdot v_a+M_a)} \: for \quad a > 1, a< n\\ 
+		N_{n} &= N_{n-1} \:\frac{e^{-(F \cdot v_a+M_a)}}{1-e^{-(F \cdot v_a +M_a)}}\: for \quad a=n \\
+		f_a &= Mat_a \cdot fec_{a}\\
+		E &= \sum_a \: N_{a} \cdot f_a \quad \text{\color{red} Spawning Biomass Per Recruit}\\
+	%	C &= \sum_a \: N_{a} w_a \: (1-e^{-(F \cdot v_a +M_a)})\frac{F \cdot v_a}{F \cdot v_a +M_a} \text{\color{red}Yield Per Recruit}
+	\end{align*}
+	\begin{block}{Assumptions}
+	 No I/E; parameters M, v, w/g, f don't change over time; single fishery with single v 
+	\end{block}
+\end{frame}
+%--------------------------------------------------------------------------------------------
+
+
+\begin{frame}
+	\frametitle{Eel Spawner Per Recruit}
+	\begin{align*}
+		N_0 &= 1 \\
+		F^{elv}_a &= F^{elv} \cdot v^{elv}_a; \quad F^{sy}_a = F^{sy} \cdot v^{sy}_a \\ 
+		F'_a &= \sum{ F^{elv}_a+F^{sy}_a } \\
+		N^{mat}_a &= N_a \cdot Mat_a \\
+		N_{a+1} &= N_a \: e^{-(F'_a +M_a)} - N^{mat}_a \: for \quad a > 0, a< n \\
+		N_{n} &= N_{n-1} \:\frac{e^{-(F'_a+M_a)}}{1-e^{-(F'_a +M_a)}}\: for \quad a=n \\
+		N^{mat}_n &= N_n \\
+		N^{Spawners}_a &= N^{mat}_a e^{-M_{at Sea}} \\
+		E &= \sum_a \: N^{Spawners}_a \cdot fec_a \quad \text{\color{red} Spawning Biomass Per Recruit} \\
+	\end{align*}
+\end{frame}
+
+%--------------------------------------------------------------------------------------------
+
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Life History Parameters (base case)}
+	\centering
+	  \includegraphics[width=0.35\textwidth]{\e LAA.png}
+      \includegraphics[width=0.35\textwidth]{\e WAA.png}
+ \includegraphics[width=0.35\textwidth]{\e MAA.png} \\
+
+ \includegraphics[width=0.35\textwidth]{\e MatAA.png}
+ \includegraphics[width=0.35\textwidth]{\e ppR.png}
+	\includegraphics[width=0.35\textwidth]{\e FecAA.png}\\[-1ex]
+	{\tiny Chaput and Cairns 2011; Tremblay 2009 }
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+
+
+\begin{frame}
+	\frametitle{Elver Fishery Alone}
+	\centering
+	  \includegraphics[width=0.25\textwidth]{\e ElverppR.png}
+	  \includegraphics[width=0.75\textwidth]{\e baseElverSPR.png}\\[-1ex]
+	{\tiny{ U50= 0.5; U30=0.7}}
+
+
+\end{frame}
+
+
+%--------------------------------------------------------------------------------------------
+
+
+\begin{frame}
+	\frametitle{Eel Fishery Alone}
+	\centering
+	  \includegraphics[width=0.25\textwidth]{\e eelppR.png}
+	  \includegraphics[width=0.75\textwidth]{\e baseEelSPR.png}\\[-1ex]
+	{\tiny{ U50= 0.09; U30=0.164}}
+
+
+\end{frame}
+
+
+%--------------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Random Variation in Life History Parameters}
+	\centering
+	  \includegraphics[width=0.35\textwidth]{\e randomLAA.png}
+      \includegraphics[width=0.35\textwidth]{\e randomWAA.png}
+ \includegraphics[width=0.35\textwidth]{\e randomMAA.png} \\
+
+ \includegraphics[width=0.35\textwidth]{\e randomMatAA.png}
+ \includegraphics[width=0.35\textwidth]{\e randomppR.png}
+	\includegraphics[width=0.35\textwidth]{\e randomFecAA.png}\\[-1ex]
+	{\tiny Chaput and Cairns 2011; Tremblay 2009}
+\end{frame}
+
+
+
+
+%--------------------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Uncertainty in Life History Parameters}
+	\centering
+	  \includegraphics[width=0.45\textwidth]{\e randomElverSPR30.png}
+	  \includegraphics[width=0.45\textwidth]{\e randomElverSPR50.png}\\
+	  \includegraphics[width=0.45\textwidth]{\e randomEelSPR30.png}	
+	  \includegraphics[width=0.45\textwidth]{\e randomEelSPR50.png}
+
+
+
+\end{frame}
+
+%--------------------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Eels and Elvers in the Maritimes}
+	\centering
+	  \includegraphics[width=0.45\textwidth]{\e elverDrainages.png}
+	  \includegraphics[width=0.45\textwidth]{\e eelDrainages.png}\\
+%	  \includegraphics[width=0.45\textwidth]{\e hydrobarriers.png}	
+
+
+
+\end{frame}
+
+%--------------------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{SPR Elver \& Eel Fisheries}
+	\centering
+	  \includegraphics[width=0.65\textwidth]{\e baseEelElverSPR.png}
+
+\end{frame}
+
+
+%--------------------------------------------------------------------------------------------
+
+%--------------------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Growth Impacts on SPR}
+	\centering
+	  \includegraphics[width=0.45\textwidth]{\e LAAonElverSPR.png}
+		  \includegraphics[width=0.45\textwidth]{\e LAAonEelSPR.png}
+	
+	  \includegraphics[width=0.35\textwidth]{\e GrowthComps.png}
+	
+\end{frame}
+
+
+%--------------------------------------------------------------------------------------------
+%\begin{frame}
+	%\frametitle{Natural Mortality Impacts on SPR}
+	%\centering
+%	  \includegraphics[width=0.45\textwidth]{\e MAAonElverSPR.png}
+%	  \includegraphics[width=0.45\textwidth]{\e MAAonEelSPR.png} \\
+%	  \includegraphics[width=0.35\textwidth]{\e MortalityComps.png}
+	
+%\end{frame}
+
+%-----------------------------------------------------------------
+\begin{frame}
+	\frametitle{Regional SPR}
+	\begin{itemize}
+		\item Life history characteristics alter SPR
+		\item Regional variability in life history 
+		\item Important to account for variability in SPR for Regional / Zonal Management especially given panmixia
+		\item Need more LH data on specific watershed
+		\begin{itemize}
+			\item Growth - Length at Age
+			\item Sex ratio 
+			\item Maturity at age
+			\item Weigth at age (proxy for fecundity)
+		\end{itemize}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Regional SPR}
+	\begin{itemize}
+	\item After developing Reference Points need to evaluate stock status and exploitation
+		\item Run size and exploitation rates elver rivers (or proxies thereof....Bradford paper??)
+		\item Yellow and silver eel monitoring
+			\begin{itemize}
+				\item If fishery is reducing, other data sources?
+				\item Sentinel fishery?
+				\item Important information 
+			\end{itemize}
+		\item Parting Q - are SPR30 and SPR50 appropriate for elver fishery
+			\begin{itemize}
+				\item A lot happens /can happen in the 10-40+ years before becoming part of the spawning population
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+

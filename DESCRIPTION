@@ -1,0 +1,9 @@
+Package: bio.eels
+Title: Estimation of Reference Points in American Eels
+Version: 0.0.0.9000
+Authors@R: person("Adam", "Cook", email ="Adam.Cook@dfo-mpo.gc.ca" , role = c("aut", "cre"))
+Description: Using life history parameters and habitat variable develop spawner potential ratio reference points.
+Depends: R (>= 3.3.1)
+License: MIT
+Encoding: UTF-8
+LazyData: true
