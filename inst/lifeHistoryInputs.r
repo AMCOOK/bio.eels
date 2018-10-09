@@ -16,6 +16,7 @@ load_all('~/git/bio.eels')
 	source('~/git/bio.eels/data/Cairnsknifeedge.r') 
 	
 	#to get distributions for LAA
+	jj = list()
 	for(i in 1:length(p$LAAl)) {
 		j = findMoments(dist='lnorm',lo=p$LAAl[i],up=p$LAAu[i],l.perc=0.05, u.perc=0.95)
 		p$LAA[i]  = j[[1]]
@@ -210,13 +211,44 @@ b =		 FSPR40(Fvec,S/S[1],ref=0.5)
 		
 	
 	png(file.path(file=project.figuredirectory('bio.eels'),'baseEelSPR.png'),units='in',width=15,height=12,pointsize=18, res=300,type='cairo')
-		plot(Fvec,S/S[1],xlab='F elver',ylab='%SPR',lwd=1.5,lty=1,pch=16,type='l',ylim=c(0,1))
+		plot(Fvec,S/S[1],xlab='F eel',ylab='%SPR',lwd=1.5,lty=1,pch=16,type='l',ylim=c(0,1))
 		arrows(x0=a[1],y1=0,y0=a[2],,angle=45,length=0.05,col='red',lwd=1.5)
 		arrows(x0=b[1],y1=0,y0=b[2],,angle=45,length=0.05,col='red',lwd=1.5)
 		text(a[1]+0.03,0,paste('F30=',round(a[1],3)),cex=0.8)
 		text(b[1]-0.03,0,paste('F50=',round(b[1],3)),cex=0.8)
 	dev.off()
 				
+
+####Turbine mortality
+
+	TurM = seq(0,2,by=0.01)
+	Y = c()
+	S = c()
+
+	for(i in 1:length(TurM)) {
+		p$turM = TurM[i]
+		a = eelEquilProduction(p,rand=FALSE,Felv=0,F=0)
+		Y[i] = a$Catch
+		S[i] = a$Eggs
+		print(TurM[i])
+		}
+
+
+a = 	 FSPR40(TurM,S/S[1],ref=0.3)
+b =		 FSPR40(TurM,S/S[1],ref=0.5)
+
+
+		
+	
+	png(file.path(file=project.figuredirectory('bio.eels'),'baseEelTurbineM.png'),units='in',width=15,height=12,pointsize=18, res=300,type='cairo')
+		plot(TurM,S/S[1],xlab='Turbine Mortality',ylab='%SPR',lwd=1.5,lty=1,pch=16,type='l',ylim=c(0,1))
+		arrows(x0=a[1],y1=0,y0=a[2],,angle=45,length=0.05,col='red',lwd=1.5)
+		arrows(x0=b[1],y1=0,y0=b[2],,angle=45,length=0.05,col='red',lwd=1.5)
+		text(a[1]+0.03,0,paste('TurM30=',round(a[1],3)),cex=0.8)
+		text(b[1]-0.03,0,paste('TurM50=',round(b[1],3)),cex=0.8)
+	dev.off()
+				
+
 
 
 
@@ -228,13 +260,15 @@ b =		 FSPR40(Fvec,S/S[1],ref=0.5)
 	aa = iterateEelEquilCalcs(p=p,niter=20000,plot=T,Felv=Felv,ref=0.3)
 	
 	png(file.path(file=project.figuredirectory('bio.eels'),'randomElverSPR30.png'),units='in',width=15,height=12,pointsize=18, res=300,type='cairo')
-	hist(aa[,3],xlab='Fspr30',main='')
+	 hist(aa[,3],xlab='Fspr30',main='',xlim=c(0.7,1.4))
+	abline(v=median(aa[,3]),col='red',lwd=2) # 1.203
 	dev.off()
 	
 	ab = iterateEelEquilCalcs(p=p,niter=20000,plot=T,Felv=Felv,ref=0.5)
 
 	png(file.path(file=project.figuredirectory('bio.eels'),'randomElverSPR50.png'),units='in',width=15,height=12,pointsize=18, res=300,type='cairo')
-	hist(ab[,3],xlab='Fspr50',main='')
+	hist(ab[,3],xlab='Fspr50',main='',xlim=c(0.4,0.8))
+	abline(v=median(ab[,3]),col='red',lwd=2)#median(ab[,3]) = 0.69
 	dev.off()
 	
 #FpostElver

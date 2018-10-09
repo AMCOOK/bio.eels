@@ -19,7 +19,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[SPR for American Eel]{American Eel\\ Framework for Developing SPR Reference Points \\ \tiny aka Chaput and Cairns CSAS 2011 Res Doc} 
+\title[SPR for American Eel]{Developing SPR Reference Points for American Eel in the Maritimes Region\\ } 
 {
 	\author{Adam Cook \& Rod Bradford} % Your name
 \institute[Population Ecology Division]
@@ -46,8 +46,8 @@
 %
 \begin{itemize}
 	\item Precautionary approach to managing fish stocks
-	\item Develop harvest strategies and reference points to define zones
-	\item ICES 2001 suggested Spawner Per Recruit or Spawner Potential Ratio (SPR) can be used to define harvest levels 
+	\item Develop reference points to define stock status zones and/or appropriate harvest levels (removal references)
+	\item ICES 2001 suggested Spawner Per Recruit or Spawner Potential Ratio (SPR) can be used to define harvest levels in Eel
 \end{itemize}
 
 \end{frame}
@@ -74,7 +74,7 @@
 		\item Incorporates life history variables
 		\item Examine the relationship between fishing mortality and spawner production 
 		\item Developed for Groundfish - applied to a range of species
-		\item Easily extendible to explore harvest rate strategies and life patterns
+		\item Easily extendible to explore harvest strategies and life patterns
 	\end{itemize}
 
 
@@ -94,8 +94,7 @@
 		\item Incorporating variable life history and different mortality scenarios.
 		\item Strengthened the case for regional scale reference levels
 	\end{itemize}
-\item Continue this discussion, combine elver fishing into the SPR framework and explore interactions
-\item This work presented here is \textbf{NOT} designed to define F reference levels for Maritimes Region 
+\item Continue this discussion, combine elver fishing into the SPR framework
 \end{itemize}
 
 \end{frame}
@@ -144,7 +143,7 @@
 	\begin{align*}
 		N_0 &= 1 \\
 		F^{elv}_a &= F^{elv} \cdot v^{elv}_a; \quad F^{sy}_a = F^{sy} \cdot v^{sy}_a \\ 
-		F'_a &= \sum{ F^{elv}_a+F^{sy}_a } \\
+		F'_a &=  F^{elv}_a+F^{sy}_a  \\
 		N^{mat}_a &= N_a \cdot Mat_a \\
 		N_{a+1} &= N_a \: e^{-(F'_a +M_a)} - N^{mat}_a \: for \quad a > 0, a< n \\
 		N_{n} &= N_{n-1} \:\frac{e^{-(F'_a+M_a)}}{1-e^{-(F'_a +M_a)}}\: for \quad a=n \\
@@ -162,14 +161,14 @@
 \begin{frame}
 	\frametitle{Life History Parameters (base case)}
 	\centering
-	  \includegraphics[width=0.35\textwidth]{\e LAA.png}
-      \includegraphics[width=0.35\textwidth]{\e WAA.png}
- \includegraphics[width=0.35\textwidth]{\e MAA.png} \\
+	  \includegraphics[width=0.30\textwidth]{\e LAA.png}
+      \includegraphics[width=0.30\textwidth]{\e WAA.png}
+ \includegraphics[width=0.30\textwidth]{\e MAA.png} \\
 
- \includegraphics[width=0.35\textwidth]{\e MatAA.png}
- \includegraphics[width=0.35\textwidth]{\e ppR.png}
-	\includegraphics[width=0.35\textwidth]{\e FecAA.png}\\[-1ex]
-	{\tiny Chaput and Cairns 2011; Tremblay 2009 }
+ \includegraphics[width=0.30\textwidth]{\e MatAA.png}
+ \includegraphics[width=0.30\textwidth]{\e ppR.png}
+	\includegraphics[width=0.30\textwidth]{\e FecAA.png}\\[-1ex]
+	{\tiny Chaput and Cairns 2011; Barbin and McCleave 1997 }
 \end{frame}
 
 %----------------------------------------------------------------------------------------
@@ -178,10 +177,10 @@
 
 \begin{frame}
 	\frametitle{Elver Fishery Alone}
-	\centering
 	  \includegraphics[width=0.25\textwidth]{\e ElverppR.png}
-	  \includegraphics[width=0.75\textwidth]{\e baseElverSPR.png}\\[-1ex]
-	{\tiny{ U50= 0.5; U30=0.7}}
+	\centering
+	  \includegraphics[width=0.70\textwidth]{\e baseElverSPR.png}\\[-1ex]
+	{\tiny{ U50= 0.49; U30=0.69}}
 
 
 \end{frame}
@@ -192,10 +191,11 @@
 
 \begin{frame}
 	\frametitle{Eel Fishery Alone}
-	\centering
+	
 	  \includegraphics[width=0.25\textwidth]{\e eelppR.png}
-	  \includegraphics[width=0.75\textwidth]{\e baseEelSPR.png}\\[-1ex]
-	{\tiny{ U50= 0.09; U30=0.164}}
+	\centering
+	  \includegraphics[width=0.70\textwidth]{\e baseEelSPR.png}\\[-1ex]
+	{\tiny{ U50= 0.09; U30=0.15}}
 
 
 \end{frame}
@@ -206,15 +206,13 @@
 \begin{frame}
 	\frametitle{Random Variation in Life History Parameters}
 	\centering
-	  \includegraphics[width=0.35\textwidth]{\e randomLAA.png}
-      \includegraphics[width=0.35\textwidth]{\e randomWAA.png}
- \includegraphics[width=0.35\textwidth]{\e randomMAA.png} \\
-
- \includegraphics[width=0.35\textwidth]{\e randomMatAA.png}
- \includegraphics[width=0.35\textwidth]{\e randomppR.png}
-	\includegraphics[width=0.35\textwidth]{\e randomFecAA.png}\\[-1ex]
-	{\tiny Chaput and Cairns 2011; Tremblay 2009}
-\end{frame}
+	  \includegraphics[width=0.30\textwidth]{\e randomLAA.png}
+      \includegraphics[width=0.30\textwidth]{\e randomWAA.png}
+ 	  \includegraphics[width=0.30\textwidth]{\e randomMAA.png} \\
+	  \includegraphics[width=0.30\textwidth]{\e randomMatAA.png}
+ 	  \includegraphics[width=0.30\textwidth]{\e randomppR.png}
+	  \includegraphics[width=0.30\textwidth]{\e randomFecAA.png}\\[-1ex]
+	\end{frame}
 
 
 
@@ -238,6 +236,7 @@
 	\centering
 	  \includegraphics[width=0.45\textwidth]{\e elverDrainages.png}
 	  \includegraphics[width=0.45\textwidth]{\e eelDrainages.png}\\
+	  {\tiny{$\sim 10\%$ overlap in fisheries}}
 %	  \includegraphics[width=0.45\textwidth]{\e hydrobarriers.png}	
 
 
@@ -294,25 +293,32 @@
 		\end{itemize}
 \end{frame}
 
+
 \begin{frame}
-	\frametitle{Regional SPR}
-	\begin{itemize}
-	\item After developing Reference Points need to evaluate stock status and exploitation
-		\item Run size and exploitation rates elver rivers (or proxies thereof....Bradford paper??)
-		\item Yellow and silver eel monitoring
-			\begin{itemize}
-				\item If fishery is reducing, other data sources?
-				\item Sentinel fishery?
-				\item Important information 
-			\end{itemize}
-		\item Parting Q - are SPR30 and SPR50 appropriate for elver fishery
-			\begin{itemize}
-				\item A lot happens /can happen in the 10-40+ years before becoming part of the spawning population
-			\end{itemize}
-	\end{itemize}
-\end{frame}
+	\frametitle{Kg/km2}
+	\centering
+	  \includegraphics[width=0.7\textwidth]{\e MedianMeanKgperKm2.png}
+   \end{frame}
+
+\begin{frame}
+	\frametitle{Exploitation/km2}
+	\centering
+	  \includegraphics[width=0.7\textwidth]{\e ExploitationbyDrainageAreaCols.png}
+   \end{frame}
 
 
+\begin{frame}
+	\frametitle{TAC estimates by Habitat }
+	\centering
+	  \includegraphics[width=0.7\textwidth]{\e ColsHabitatTACbySPRRawModelledwithData.png}
+   \end{frame}
+
+
+\begin{frame}
+	\frametitle{TAC estimates by Habitat Zoomed}
+	\centering
+	  \includegraphics[width=0.7\textwidth]{\e ColsHabitatTACbySPRRawModelledwithDataZoomed<250.png}
+   \end{frame}
 
 \end{document}
 

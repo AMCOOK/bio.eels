@@ -12,8 +12,8 @@ p$LAAu = c(10.7,22.5,29,33.1,34.8,48.4,54.1,62.3,67.6,66.1,74.4,88.6,78.3,76.8,8
 p$nAges = 26
 p$LAA = c()
 p$LAAs = c()
-#carins et al 2006 wt length regression
 
+#carins et al 2006 wt length regression
 p$wtreg = 'standard'
 p$wt.La = 0.0007006
 p$wt.Lb = 3.2332
@@ -40,8 +40,13 @@ p$wt.Lb = 3.2332
 
 
 # fecundity at length reg parameters from Tremblay 2009 Southern Gulf and Atl Seaboard
-			p$fecA = 3673
-			p$fecB = 1.761
+	#		p$fecA = 3673
+	#		p$fecB = 1.761
+	
+	# fecundity at length barbin and mccleave 1997 for Assessment Sept 2018
+		#log(fec) = 1.2601 + 2.9642(log(length))
+			p$fecA = 18.2
+			p$fecB = 2.9642
 
 # $ per kg at size
 			p$value = c(1000,rep(2,p$nAges-1))

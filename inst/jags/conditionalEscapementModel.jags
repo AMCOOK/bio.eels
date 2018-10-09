@@ -1,0 +1,28 @@
+model
+{
+  # priors
+  beta0 ~ dnorm(0,0.001)
+  beta1 ~ dnorm(0,0.001)
+  beta2 ~ dnorm(0,0.001)
+  beta3 ~ dnorm(0,0.001)
+  sigma ~ dunif(0.001*sdL,100*sdL)
+ 
+  for(i in 1:isH){
+        esK[i] ~ dlnorm(lmu[i], 1/(sigma*sigma))
+        lmu[i] <- beta0 + beta1 * sH[i] + beta2 * L[i]
+        mu[i] = exp(lmu[i]+sigma^2/2)
+        sig[i] = sqrt(exp(2*lmu[i]+sigma^2)*(exp(sigma^2)-1))
+        TRS[i] = LL[i] + mu[i]
+        U[i] = LL[i] / TRS[i]
+        URS[i] = TRS[i] / Ar
+        }
+  for(i in (isH+1):iT){
+        esK[i] ~ dlnorm(lmu[i], 1/(sigma*sigma))
+        lmu[i] <- beta0 + beta2 * L[i] + beta3 * L[i] * qU[i]
+        mu[i] = exp(lmu[i]+sigma^2/2)
+        sig[i] = sqrt(exp(2*lmu[i]+sigma^2)*(exp(sigma^2)-1))
+        TRS[i] = LL[i] + mu[i]
+        U[i] = LL[i] / TRS[i]
+        URS[i] = TRS[i] / Ar
+       }
+    }

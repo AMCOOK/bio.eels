@@ -1,0 +1,32 @@
+model
+{
+  # priors
+  beta0 ~ dnorm(0,0.001)
+  beta1 ~ dnorm(0,0.001)
+  beta2 ~ dnorm(0,0.001)
+  beta3 ~ dnorm(0,0.001)
+  sigma ~ dunif(0.001*sdL,100*sdL)
+  tau ~ dunif(0.001*sdL,100*sdL)
+ 
+  for( i in 1:iT){
+        esK[i] ~ dlnorm(lmu[i], 1/(sigma*sigma))
+        mu[i] = exp(lmu[i]+sigma^2/2)
+        sig[i] = sqrt(exp(2*lmu[i]+sigma^2)*(exp(sigma^2)-1))
+      } 
+
+  P0 ~dunif(0,600)
+  Pmean[1] <- (P0) ;
+  lmu[1] ~ dlnorm(Pmean[1],1/(tau*tau))
+
+  
+  for(i in 2:isH){
+        Pmean[i] <- beta0 + beta1 * sH[i-1] + beta2 * L[i-1]
+        lmu[i] ~ dlnorm(Pmean[i],1/(tau*tau))
+        }
+  for(i in (isH+1):iT){
+        Pmean[i] <- beta0 + beta2 * L[i-1] + beta3 * L[i-1] * qU[i-1]
+        lmu[i] ~ dlnorm(Pmean[i],1/(tau*tau))
+        }
+    #
+    #
+}
