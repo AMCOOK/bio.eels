@@ -126,7 +126,7 @@ dev.off()
 
 
 
-# output with F and Felv
+# output with Fishing eels and elvers
 
 	F = seq(0,0.4,by=0.001)
 	Felv = seq(0,1.5,by=0.001)
@@ -142,17 +142,16 @@ dev.off()
 			}
 		}
 		S1 = S/S[1,1]
-		#Y/R does not work with elver fishery as the max of a yield per recruit curve would be 100% exploitation
-			png(file.path(file=project.figuredirectory('bio.eels'),'baseEelElverSPR.png'),units='in',width=15,height=12,pointsize=18, res=300,type='cairo')
+				png(file.path(file=project.figuredirectory('bio.eels'),'baseEelElverSPR.png'),units='in',width=15,height=12,pointsize=18, res=300,type='cairo')
 			contour.mat <- ifelse(S1 > .5, 0, 1)
 			contour.mat2 <- ifelse(S1<0.3, 0, 1)
 			
 			#puts the 
 			filled.contour(S1, color = colorRampPalette(c('red','blue')),xlab='F adult',ylab='F elver',
-               plot.axes = { contour(contour.mat2, levels = 1, lwd=3,lty=2,
+               plot.axes = { contour(contour.mat2, levels = 1, lwd=3,lty=1,
                                      drawlabels = FALSE, axes = FALSE, 
                                      frame.plot = FFALSE, add = TRUE);
-               				contour(contour.mat, levels = 1, lwd=3,lty=1,
+               				contour(contour.mat, levels = 1, lwd=3,lty=2,
                                      drawlabels = FALSE, axes = FALSE, 
                                      frame.plot = FFALSE, add = TRUE);
                axis(side=1,at=c(.2,.4,.6,.8),labels=quantile(F,c(.2,.4,.6,.8)));
